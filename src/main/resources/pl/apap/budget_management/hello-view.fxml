@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.2993311036789298" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.apap.budget_management.Controller">
+<SplitPane dividerPositions="0.3168896321070234" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.apap.budget_management.Controller">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
             <TextField fx:id="emailField" layoutX="24.0" layoutY="132.0" prefHeight="26.0" prefWidth="130.0" promptText="E-mail" />
             <PasswordField fx:id="passwordField" layoutX="24.0" layoutY="179.0" prefHeight="18.0" prefWidth="130.0" promptText="Password" />
-             <Button fx:id="loginButton" layoutX="24.0" layoutY="231.0" mnemonicParsing="false" onAction="#login" prefHeight="34.0" prefWidth="130.0" text="Login" />
-            <Button fx:id="registerButton" layoutX="24.0" layoutY="283.0" mnemonicParsing="false" onAction="#register" prefHeight="34.0" prefWidth="130.0" text="Create an account" />
+             <Button fx:id="loginButton" layoutX="24.0" layoutY="267.0" mnemonicParsing="false" onAction="#login" prefHeight="34.0" prefWidth="130.0" text="Login" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <ImageView fitHeight="400.0" fitWidth="417.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="74.0" fitWidth="417.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="registerButton" layoutX="127.0" layoutY="336.0" mnemonicParsing="false" onAction="#register" prefHeight="34.0" prefWidth="130.0" text="Create an account" />
+            <PasswordField fx:id="registerPassword2" layoutX="112.0" layoutY="268.0" />
+            <PasswordField fx:id="registerPassword" layoutX="112.0" layoutY="216.0" />
+            <TextField fx:id="registerName" layoutX="112.0" layoutY="73.0" />
+            <TextField fx:id="registerSurname" layoutX="112.0" layoutY="120.0" />
+            <TextField fx:id="registerEmail" layoutX="112.0" layoutY="166.0" />
+            <Label fx:id="nameLabel" layoutX="112.0" layoutY="56.0" prefHeight="17.0" prefWidth="73.0" text="Name" />
+            <Label fx:id="surnameLabel" layoutX="112.0" layoutY="103.0" prefHeight="17.0" prefWidth="73.0" text="Surname" />
+            <Label fx:id="emailLabel" layoutX="112.0" layoutY="151.0" prefHeight="17.0" prefWidth="73.0" text="Email" />
+            <Label fx:id="passwordLabel" layoutX="112.0" layoutY="199.0" prefHeight="17.0" prefWidth="73.0" text="Password" />
+            <Label fx:id="passwordLabel2" layoutX="112.0" layoutY="251.0" prefHeight="17.0" prefWidth="108.0" text="Password again" />
          </children></AnchorPane>
   </items>
 </SplitPane>
