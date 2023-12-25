@@ -2,15 +2,20 @@ package pl.apap.budget_management;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 
 public class Controller {
 
+
+    @FXML
+    public SplitPane loginPane;
+    @FXML
+    public AnchorPane loginPane1, loginPane2, afterLoginPane, afterLoginPane1;
     @FXML
     public TextField emailField, registerName, registerSurname, registerEmail;
 
@@ -22,6 +27,7 @@ public class Controller {
 
     @FXML
     public Button registerButton;
+    AfterLoginController afterLoginController = new AfterLoginController();
     DatabaseService dbs = new DatabaseService();
 
     public void login(ActionEvent event) {
@@ -38,7 +44,7 @@ public class Controller {
             if(isValid){
                 alert.setContentText("logged in");
                 // metoda to drugiego widoku.
-                emailField.setVisible(false);
+                afterLoginController.start();
             } else {
                 alert.setContentText("Wrong password");
             }
@@ -58,25 +64,20 @@ public class Controller {
         String password = registerPassword.getText();
         String passwrod2 = registerPassword2.getText();
 
+        alert.setTitle("REGISTER ERROR");
         if(dbs.userExists(email)){
-            alert.setTitle("Register");
-            alert.setHeaderText(null);
             alert.setContentText("Account with that email already exists");
             alert.showAndWait();
         } else if (name.isBlank()|| name.isEmpty()) {
-            alert.setTitle("ERROR");
             alert.setContentText("Please enter your name");
             alert.showAndWait();
         } else if (surname.isBlank()|| surname.isEmpty()) {
-            alert.setTitle("ERROR");
             alert.setContentText("Please enter your surname");
             alert.showAndWait();
         }else if(email.isBlank()|| email.isEmpty()) {
-            alert.setTitle("ERROR");
             alert.setContentText("Please enter your email");
             alert.showAndWait();
         }else if(!password.equals(passwrod2)) {
-            alert.setTitle("ERROR");
             alert.setContentText("Passwords are not the same.");
             alert.showAndWait();
         }else {
@@ -86,4 +87,6 @@ public class Controller {
             alert.showAndWait();
         }
     }
+
+
 }
