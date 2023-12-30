@@ -10,16 +10,19 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+        Controller controller = loader.getController();
+        controller.setPrimaryStage(primaryStage);
+
+        primaryStage.setTitle("Budget Management");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.show();
     }
 
-
-        public static void main(String[] args) {
-        launch();
+    public static void main(String[] args) {
+        launch(args);
     }
 }

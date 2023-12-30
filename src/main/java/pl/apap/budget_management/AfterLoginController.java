@@ -1,10 +1,11 @@
 package pl.apap.budget_management;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TreeTableView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -17,11 +18,19 @@ public class AfterLoginController {
     public AnchorPane afterLoginPane, afterLoginPane1;
 
     @FXML
-    public Button button1, button2, button3;
+    public Button yoursMoneyButton, investedMoneyButton, earnedMoneyButton, expenseButton, homeButton, logoutButton;
 
     @FXML
-    public TreeTableView table1;
+    public Label usernameLabel, appVersionLabel;
 
+    @FXML
+    public ImageView topImage;
+
+    DatabaseService dbs = new DatabaseService();
+
+
+
+    String email;
 
     public void start(){
         LoadFXML loadFXML = new LoadFXML();
@@ -30,5 +39,9 @@ public class AfterLoginController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        dbs.loggedUserInfo(email);
+
+
     }
 }

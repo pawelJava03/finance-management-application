@@ -9,26 +9,26 @@
 
 <?import javafx.scene.layout.StackPane?>
 <SplitPane fx:id="loginPane" dividerPositions="0.3168896321070234" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.apap.budget_management.Controller">
-  <items>
-    <AnchorPane fx:id="loginPane1" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-         <children>
-            <TextField fx:id="emailField" layoutX="24.0" layoutY="132.0" prefHeight="26.0" prefWidth="130.0" promptText="E-mail" />
-            <PasswordField fx:id="passwordField" layoutX="24.0" layoutY="179.0" prefHeight="18.0" prefWidth="130.0" promptText="Password" />
-             <Button fx:id="loginButton" layoutX="24.0" layoutY="267.0" mnemonicParsing="false" onAction="#login" prefHeight="34.0" prefWidth="130.0" text="Login" />
-         </children></AnchorPane>
-    <AnchorPane fx:id="loginPane2" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-         <children>
-            <Button fx:id="registerButton" layoutX="127.0" layoutY="336.0" mnemonicParsing="false" onAction="#register" prefHeight="34.0" prefWidth="130.0" text="Create an account" />
-            <PasswordField fx:id="registerPassword2" layoutX="112.0" layoutY="268.0" />
-            <PasswordField fx:id="registerPassword" layoutX="112.0" layoutY="216.0" />
-            <TextField fx:id="registerName" layoutX="112.0" layoutY="73.0" />
-            <TextField fx:id="registerSurname" layoutX="112.0" layoutY="120.0" />
-            <TextField fx:id="registerEmail" layoutX="112.0" layoutY="166.0" />
-            <Label fx:id="nameLabel" layoutX="112.0" layoutY="56.0" prefHeight="17.0" prefWidth="73.0" text="Name" />
-            <Label fx:id="surnameLabel" layoutX="112.0" layoutY="103.0" prefHeight="17.0" prefWidth="73.0" text="Surname" />
-            <Label fx:id="emailLabel" layoutX="112.0" layoutY="151.0" prefHeight="17.0" prefWidth="73.0" text="Email" />
-            <Label fx:id="passwordLabel" layoutX="112.0" layoutY="199.0" prefHeight="17.0" prefWidth="73.0" text="Password" />
-            <Label fx:id="passwordLabel2" layoutX="112.0" layoutY="251.0" prefHeight="17.0" prefWidth="108.0" text="Password again" />
-         </children></AnchorPane>
-  </items>
+    <items>
+        <AnchorPane fx:id="loginPane1" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+                <TextField fx:id="emailField" layoutX="24.0" layoutY="132.0" prefHeight="26.0" prefWidth="130.0" promptText="E-mail" />
+                <PasswordField fx:id="passwordField" layoutX="24.0" layoutY="179.0" prefHeight="18.0" prefWidth="130.0" promptText="Password" />
+                <Button fx:id="loginButton" layoutX="24.0" layoutY="267.0" mnemonicParsing="false" onAction="#login" prefHeight="34.0" prefWidth="130.0" text="Login" />
+            </children></AnchorPane>
+        <AnchorPane fx:id="loginPane2" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+                <Button fx:id="registerButton" layoutX="127.0" layoutY="336.0" mnemonicParsing="false" onAction="#register" prefHeight="34.0" prefWidth="130.0" text="Create an account" />
+                <PasswordField fx:id="registerPassword2" layoutX="112.0" layoutY="268.0" />
+                <PasswordField fx:id="registerPassword" layoutX="112.0" layoutY="216.0" />
+                <TextField fx:id="registerName" layoutX="112.0" layoutY="73.0" />
+                <TextField fx:id="registerSurname" layoutX="112.0" layoutY="120.0" />
+                <TextField fx:id="registerEmail" layoutX="112.0" layoutY="166.0" />
+                <Label fx:id="nameLabel" layoutX="112.0" layoutY="56.0" prefHeight="17.0" prefWidth="73.0" text="Name" />
+                <Label fx:id="surnameLabel" layoutX="112.0" layoutY="103.0" prefHeight="17.0" prefWidth="73.0" text="Surname" />
+                <Label fx:id="emailLabel" layoutX="112.0" layoutY="151.0" prefHeight="17.0" prefWidth="73.0" text="Email" />
+                <Label fx:id="passwordLabel" layoutX="112.0" layoutY="199.0" prefHeight="17.0" prefWidth="73.0" text="Password" />
+                <Label fx:id="passwordLabel2" layoutX="112.0" layoutY="251.0" prefHeight="17.0" prefWidth="108.0" text="Password again" />
+            </children></AnchorPane>
+    </items>
 </SplitPane>

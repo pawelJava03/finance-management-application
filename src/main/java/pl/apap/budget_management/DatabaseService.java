@@ -10,29 +10,12 @@ import java.util.List;
 
 public class DatabaseService {
 
+
     private static final String JDBC_URL = "jdbc:sqlite:/Users/apap/IdeaProjects/budget_management/moneydb.db";
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(JDBC_URL);
     }
-
-//    public List<String> userInfo(String userEmail) {
-//        List<String> records = new ArrayList<>();
-//
-//        try (Connection connection = getConnection();
-//             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM finanse(name, surname, email)");
-//             ResultSet resultSet = preparedStatement.executeQuery()) {
-//
-//            while (resultSet.next()) {
-//                String rekord = resultSet.getString("email");
-//                records.add(rekord);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return records;
-//    }
 
     public void newUser(String name, String surname, String email, String password) {
         if (userExists(email)) {
@@ -81,6 +64,36 @@ public class DatabaseService {
         } catch (SQLException e) {
             throw new RuntimeException("Błąd podczas sprawdzania użytkownika", e);
         }
+    }
+
+    private Long id;
+    private String name, surname, email;
+
+    private Double yoursMoney, yoursInvestment, totalEarned, totalLoses;
+    public void loggedUserInfo(String email) {
+        try (Connection connection = getConnection();
+             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM finanse WHERE email = ?;")) {
+            stmt.setString(1, email);
+            try (ResultSet resultSet = stmt.executeQuery()) {
+                if (resultSet.next()) {
+                    name = resultSet.getString("name");
+                    surname = resultSet.getString("surname");
+                    email = resultSet.getString("email");
+                    yoursMoney = resultSet.getDouble("yours_money");
+                    yoursInvestment = resultSet.getDouble("yours_investment");
+                    totalEarned = resultSet.getDouble("total_earned");
+                    totalLoses = resultSet.getDouble("total_loses");
+                    System.out.println(name + " " + surname + " " + email);
+                } else {
+                    System.out.println("Blad podczas zapisywania do zmiennych");
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException("Blad podczas sprawdzania");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

@@ -2,20 +2,20 @@ package pl.apap.budget_management;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-import java.io.IOException;
 
 public class Controller {
+    private Stage primaryStage;
 
-
+    public String loggedName, loggedSurname;
     @FXML
     public SplitPane loginPane;
     @FXML
-    public AnchorPane loginPane1, loginPane2, afterLoginPane, afterLoginPane1;
+    public AnchorPane loginPane1, loginPane2;
     @FXML
     public TextField emailField, registerName, registerSurname, registerEmail;
 
@@ -27,6 +27,10 @@ public class Controller {
 
     @FXML
     public Button registerButton;
+
+    @FXML
+    public Label nameLabel, surnameLabel, emailLabel, passwordLabel, passwordLabel2;
+
     AfterLoginController afterLoginController = new AfterLoginController();
     DatabaseService dbs = new DatabaseService();
 
@@ -42,9 +46,13 @@ public class Controller {
         alert.setHeaderText(null);
         if (dbs.userExists(email)) {
             if(isValid){
-                alert.setContentText("logged in");
+                afterLoginController.email = email;
+                alert.setContentText("Logged in");
+                primaryStage.close();
                 // metoda to drugiego widoku.
+
                 afterLoginController.start();
+
             } else {
                 alert.setContentText("Wrong password");
             }
@@ -84,9 +92,21 @@ public class Controller {
             dbs.newUser(name, surname, email, password);
             alert.setTitle("Account created");
             alert.setContentText("Account created successfully. Now you can login");
+            registerName.setText("");
+            registerSurname.setText("");
+            registerEmail.setText("");
+            registerPassword.setText("");
+            registerPassword2.setText("");
             alert.showAndWait();
         }
     }
+    public String getEmail(){
+        return emailField.getText();
+    }
 
+
+    public void setPrimaryStage(Stage primaryStage){
+        this.primaryStage = primaryStage;
+    }
 
 }
