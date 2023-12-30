@@ -1,16 +1,19 @@
 package pl.apap.budget_management;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class AfterLoginController {
 
+
+    @FXML
+    private Stage mainStage;
     @FXML
     public SplitPane mainPane;
 
@@ -43,5 +46,28 @@ public class AfterLoginController {
         dbs.loggedUserInfo(email);
 
 
+    }
+    public void logout(ActionEvent e) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Logout");
+        alert.setContentText("Are you sure you want to log out?");
+        alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+        ButtonType result = alert.showAndWait().orElse(ButtonType.NO);
+
+        if (result == ButtonType.YES) {
+            mainStage.close();
+
+            HelloApplication helloApplication = new HelloApplication();
+            try {
+                helloApplication.start(new Stage());
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
+
+    public void setMainStage(Stage mainStage) {
+        this.mainStage = mainStage;
     }
 }
