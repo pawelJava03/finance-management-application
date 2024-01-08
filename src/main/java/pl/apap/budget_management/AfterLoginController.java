@@ -2,6 +2,7 @@ package pl.apap.budget_management;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -24,7 +25,7 @@ public class AfterLoginController {
     public Button yoursMoneyButton, investedMoneyButton, earnedMoneyButton, expenseButton, homeButton, logoutButton;
 
     @FXML
-    public Label usernameLabel, appVersionLabel;
+    public Label usernameLabel, appVersionLabel, moneyLabel;
 
     @FXML
     public ImageView topImage;
@@ -42,7 +43,6 @@ public class AfterLoginController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
         dbs.loggedUserInfo(email);
 
 
@@ -67,7 +67,44 @@ public class AfterLoginController {
         }
     }
 
+    public void yoursMoneyButton(ActionEvent e){
+        String fileName = "YoursMoney.fxml";
+        loadAndSetPane(fileName);
+
+    }
+    public void investedMoneyButton(ActionEvent e){
+        String fileName = "InvestedMoney.fxml";
+        loadAndSetPane(fileName);
+    }
+    public void earnedMoneybutton(ActionEvent e){
+        String fileName = "EarnedMoney.fxml";
+        loadAndSetPane(fileName);
+    }
+    public void expenseButton(ActionEvent e){
+        String fileName = "Expenses.fxml";
+        loadAndSetPane(fileName);
+
+        int expenses=0;
+        int totalSpentedMoney=0;
+
+    }
+
+
     public void setMainStage(Stage mainStage) {
         this.mainStage = mainStage;
+    }
+
+    private void loadAndSetPane(String fxmlFileName) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+            AnchorPane newPane = loader.load();
+
+            // Zamień zawartość mainPane na nowy AnchorPane
+            mainPane.getItems().set(1, newPane); // Zakładam, że mainPane ma dwa elementy, a nowy AnchorPane będzie na pozycji 1.
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Błąd ładowania pliku FXML.");
+        }
     }
 }
